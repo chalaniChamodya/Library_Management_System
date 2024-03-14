@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="58.0" prefWidth="1778.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Library_Management_System.Controller.UserBookBarFormController">
+   <children>
+      <HBox prefHeight="58.0" prefWidth="1778.0">
+         <children>
+            <Label fx:id="lblBookId" text="BOOK CODE">
+               <padding>
+                  <Insets left="50.0" right="50.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBookName" layoutX="10.0" layoutY="10.0" text="BOOK NAME">
+               <padding>
+                  <Insets left="200.0" right="200.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAuthor" layoutX="133.0" layoutY="10.0" text="AUTHOR">
+               <padding>
+                  <Insets left="200.0" right="200.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblStatus" layoutX="257.0" layoutY="10.0" text="BOOK STATUS">
+               <padding>
+                  <Insets left="125.0" right="100.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAction" layoutX="631.0" layoutY="10.0" text="ACTIONS">
+               <padding>
+                  <Insets left="100.0" right="100.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

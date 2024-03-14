@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="58.0" prefWidth="1778.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Library_Management_System.Controller.StaffBranchBarFormController">
+   <children>
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="1778.0">
+         <children>
+            <Label fx:id="txtBranchId" prefHeight="20.0" prefWidth="179.0" text="BRACH ID">
+               <padding>
+                  <Insets left="50.0" right="50.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtAddress" layoutX="10.0" layoutY="10.0" text="ADDRESS">
+               <padding>
+                  <Insets left="350.0" right="350.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtTotalBook" layoutX="133.0" layoutY="10.0" text="NO OF TOTAL BOOKS">
+               <padding>
+                  <Insets left="150.0" right="150.0" top="19.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton onAction="#btnUpdateOnAction" prefHeight="43.0" prefWidth="54.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../Assets/update.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#btnDeleteOnAction" prefHeight="43.0" prefWidth="50.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../Assets/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="15.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

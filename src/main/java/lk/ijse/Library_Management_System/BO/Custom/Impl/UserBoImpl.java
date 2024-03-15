@@ -81,4 +81,9 @@ public class UserBoImpl implements UserBO {
     public int getAllUserCount() {
         return userDao.getAllUserCount();
     }
+
+    @Override
+    public String getUserId(String bookName) {
+        return userDao.getUSerId(bookName);
+    }
 }

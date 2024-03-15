@@ -21,4 +21,5 @@ public interface UserBO extends SuperBO {
     int checkUsernameAndPassword(String userName, String password) throws SQLException, ClassNotFoundException;
 
     int getAllUserCount();
+    String getUserId(String bookName);
 }

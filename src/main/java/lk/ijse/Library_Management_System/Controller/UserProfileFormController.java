@@ -35,12 +35,21 @@ public class UserProfileFormController {
     }
 
     public void setData() throws SQLException, ClassNotFoundException {
-        UserDTO dto = userBO.getData(UserLoginFormController.logedUserId);
-        lblUserId.setText(String.valueOf(dto.getId()));
-        lblUserName.setText(dto.getName());
-        lblAddress.setText(dto.getAddress());
-        lblEmail.setText(dto.getEmail());
-        lblMobileNo.setText(String.valueOf(dto.getMobileNo()));
+        if (UserLoginFormController.logedUserId > 0){
+            UserDTO dto = userBO.getData(UserLoginFormController.logedUserId);
+            lblUserId.setText(String.valueOf(dto.getId()));
+            lblUserName.setText(dto.getName());
+            lblAddress.setText(dto.getAddress());
+            lblEmail.setText(dto.getEmail());
+            lblMobileNo.setText(String.valueOf(dto.getMobileNo()));
+        }else{
+            UserDTO dto = userBO.getData(UserSignupFormController.signupedUSerId);
+            lblUserId.setText(String.valueOf(dto.getId()));
+            lblUserName.setText(dto.getName());
+            lblAddress.setText(dto.getAddress());
+            lblEmail.setText(dto.getEmail());
+            lblMobileNo.setText(String.valueOf(dto.getMobileNo()));
+        }
     }
 
     public void btnEditProfileOnAction(ActionEvent actionEvent) throws IOException {

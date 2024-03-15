@@ -7,4 +7,6 @@ public interface UserDao extends CrudDao<User> {
     int checkUsernameAndPassword(String userName, String password);
 
     int getAllUserCount();
+
+    String getUSerId(String bookName);
 }

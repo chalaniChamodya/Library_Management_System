@@ -137,4 +137,23 @@ public class UserDaoImpl implements UserDao {
         session.close();
         return userCount;
     }
+
+    @Override
+    public String getUSerId(String bookName) {
+        Session session1 = SessionFactoryConfig.getInstance().getSession();
+        String sql = "SELECT user_id FROM user WHERE user_name=:1";
+        NativeQuery query = session1.createSQLQuery(sql);
+        query.setParameter("1",bookName);
+
+        List<Object[]> list = query.list();
+
+        ArrayList<Object> list2 = new ArrayList<>();
+        list2.addAll(list);
+
+        String bookId = String.valueOf(list2.get(0));
+
+        session1.close();
+
+        return bookId;
+    }
 }

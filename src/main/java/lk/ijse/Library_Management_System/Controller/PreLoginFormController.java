@@ -6,14 +6,15 @@ import lk.ijse.Library_Management_System.Utill.Navigation;
 import java.io.IOException;
 
 public class PreLoginFormController {
-    public void btnStaffLoginOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnLoginStaffOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.switchNavigation("StaffLoginForm.fxml", actionEvent);
     }
 
-    public void btnMemberLoginOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnLoginUserOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.switchNavigation("UserLoginForm.fxml", actionEvent);
     }
 
-    public void btnMemberSignupOnAction(ActionEvent actionEvent) {
+    public void btnSignupOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.switchNavigation("UserSignupForm.fxml", actionEvent);
     }
 }

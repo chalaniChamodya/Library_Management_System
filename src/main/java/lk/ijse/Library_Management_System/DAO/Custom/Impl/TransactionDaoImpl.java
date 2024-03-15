@@ -10,6 +10,7 @@ import lk.ijse.Library_Management_System.DTO.TransactionDTO;
 import lk.ijse.Library_Management_System.Entity.Book;
 import lk.ijse.Library_Management_System.Entity.Transaction;
 import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -175,5 +176,28 @@ public class TransactionDaoImpl implements TransactionDao {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public ArrayList<String> getAllUserTransactionId(int userId) throws SQLException, ClassNotFoundException {
+        Session session = SessionFactoryConfig.getInstance().getSession();
+        String sql = "SELECT transaction_id FROM transaction WHERE user_id=:1";
+        NativeQuery query = session.createSQLQuery(sql);
+        query.setParameter("1",userId);
+
+        List<Object[]> list = query.list();
+
+        ArrayList<Object> list2 = new ArrayList<>();
+        list2.addAll(list);
+
+        ArrayList<String> transId= new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            Object object = list2.get(i);
+            String id = String.valueOf(object);
+            transId.add(id);
+        }
+        session.close();
+        return transId;
     }
 }

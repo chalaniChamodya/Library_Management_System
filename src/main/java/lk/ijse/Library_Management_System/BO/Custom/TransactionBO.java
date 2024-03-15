@@ -16,4 +16,5 @@ public interface TransactionBO extends SuperBO {
 
     ArrayList<String> getAllTransactionId() throws SQLException, ClassNotFoundException;
     TransactionDTO getData(int id) throws SQLException, ClassNotFoundException;
+    ArrayList<String> getAllUserTransactionId(int userId) throws SQLException, ClassNotFoundException;
 }

@@ -29,6 +29,8 @@ public class UserDashboardFormController {
     public Label lblTotalBooks;
     public VBox vBox1;
 
+    int id;
+
     BookBO bookBO = new BookBoImpl();
     TransactionBO transactionBO = new TransactionBoImpl();
 
@@ -44,7 +46,13 @@ public class UserDashboardFormController {
 
     private void getAllTransationId() throws SQLException, ClassNotFoundException {
         ArrayList<String> list = null;
-        list = transactionBO.getAllTransactionId();
+
+        if (UserLoginFormController.logedUserId > 0){
+            id = UserLoginFormController.logedUserId;
+        }else {
+            id = UserSignupFormController.signupedUSerId;
+        }
+        list = transactionBO.getAllUserTransactionId(id);
 
 
         vBox1.getChildren().clear();

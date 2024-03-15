@@ -105,4 +105,9 @@ public class TransactionBoImpl implements TransactionBO {
         dto.setHandOverDate(transaction.getHandOverDate());
         return dto;
     }
+
+    @Override
+    public ArrayList<String> getAllUserTransactionId(int userId) throws SQLException, ClassNotFoundException {
+        return transactionDao.getAllUserTransactionId(userId);
+    }
 }

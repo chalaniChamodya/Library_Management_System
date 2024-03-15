@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="602.0" prefWidth="749.0" style="-fx-background-color: D0D0D0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Library_Management_System.Controller.UserTransactionUpdateFormController">
+   <children>
+      <Label layoutX="39.0" layoutY="43.0" text="Update Transaction">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="117.0" text="Transaction ID" textFill="#064273">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTrend" layoutX="200.0" layoutY="117.0" text=" " textFill="#064273">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="194.0" text="Book ID" textFill="#064273">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="194.0" text="Borrow Date" textFill="#064273">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="322.0" text="Return Date" textFill="#064273">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="498.0" layoutY="501.0" mnemonicParsing="false" onAction="#btnUpdateTransactionOnAction" prefHeight="51.0" prefWidth="220.0" style="-fx-background-color: #064273; -fx-background-radius: 5;" text="Update Transaction" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="235.0" layoutY="501.0" mnemonicParsing="false" onAction="#btnCancelOnAction" prefHeight="51.0" prefWidth="190.0" style="-fx-background-color: #064273; -fx-background-radius: 5;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblBorrowDate" layoutX="400.0" layoutY="218.0" prefHeight="40.0" prefWidth="324.0" style="-fx-background-color: white; -fx-background-radius: 20;" textFill="#064273" />
+      <Label fx:id="lblBookId" layoutX="38.0" layoutY="218.0" prefHeight="40.0" prefWidth="324.0" style="-fx-background-color: white; -fx-background-radius: 20;" textFill="#064273">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Label layoutX="38.0" layoutY="322.0" text="Due Date" textFill="#064273">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDueDate" layoutX="38.0" layoutY="346.0" prefHeight="40.0" prefWidth="324.0" style="-fx-background-color: white; -fx-background-radius: 20;" textFill="#064273" />
+      <DatePicker fx:id="txtReturnDate" layoutX="400.0" layoutY="344.0" prefHeight="40.0" prefWidth="324.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../Assets/Styles.css" />
+   </children>
+</AnchorPane>

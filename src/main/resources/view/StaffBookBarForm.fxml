@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,49 +12,34 @@
    <children>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="1778.0">
          <children>
-            <Label fx:id="txtBookId" text="BOOK CODE">
-               <padding>
-                  <Insets left="25.0" right="30.0" top="19.0" />
-               </padding>
+            <Label fx:id="txtBookId" prefHeight="58.0" prefWidth="300.0" text="BOOK CODE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="txtBookName" layoutX="10.0" layoutY="10.0" text="BOOK NAME">
-               <padding>
-                  <Insets left="150.0" right="150.0" top="19.0" />
-               </padding>
+            <Label fx:id="txtBookName" layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="400.0" text="BOOK NAME">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="txtAuthor" layoutX="133.0" layoutY="10.0" text="AUTHOR">
-               <padding>
-                  <Insets left="150.0" right="150.0" top="19.0" />
-               </padding>
+            <Label fx:id="txtAuthor" layoutX="133.0" layoutY="10.0" prefHeight="58.0" prefWidth="350.0" text="AUTHOR">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="txtStatus" layoutX="257.0" layoutY="10.0" text="BOOK STATUS">
-               <padding>
-                  <Insets left="100.0" right="100.0" top="19.0" />
-               </padding>
+            <Label fx:id="txtStatus" layoutX="257.0" layoutY="10.0" prefHeight="58.0" prefWidth="300.0" text="BOOK STATUS">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="txtCopies" layoutX="351.0" layoutY="10.0" text="NO OF COPIES">
-               <padding>
-                  <Insets left="75.0" right="75.0" top="19.0" />
-               </padding>
+            <Label fx:id="txtCopies" layoutX="351.0" layoutY="10.0" prefHeight="58.0" prefWidth="250.0" text="NO OF COPIES">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <JFXButton onAction="#btnUpdateOnAction" prefHeight="60.0" prefWidth="57.0" text=" ">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
                         <Image url="@../Assets/update.png" />
                      </image>
@@ -64,7 +48,7 @@
             </JFXButton>
             <JFXButton onAction="#pbtnDeleteOnAction" prefHeight="56.0" prefWidth="68.0" text=" ">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
                         <Image url="@../Assets/delete.png" />
                      </image>

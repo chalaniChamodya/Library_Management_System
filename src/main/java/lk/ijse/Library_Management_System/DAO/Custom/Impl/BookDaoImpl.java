@@ -20,15 +20,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class BookDaoImpl implements BookDao {
-    private final Session session ;
+    Session session;
+    //private final Session session ;
 
-    public BookDaoImpl() {
-        session = SessionFactoryConfig.getInstance().getSession();
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
     }
 
     @Override
     public Book getData(int id) throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         //int bookId = Integer.parseInt(id);
         Book existingBook = session.get(Book.class, id);
 
@@ -47,7 +49,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public boolean save(Book book) throws SQLException, ClassNotFoundException {
-        //Session session2 = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         /*Book book = new Book();
         book.setId(Integer.parseInt(String.valueOf(dto.getId())));
@@ -62,7 +64,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public boolean update(Book book) throws SQLException, ClassNotFoundException {
         try{
-            //Session session = SessionFactoryConfig.getInstance().getSession();
+            Session session = SessionFactoryConfig.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             session.update(book);
             transaction.commit();
@@ -78,7 +80,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         try {
-            //Session session = SessionFactoryConfig.getInstance().getSession();
+            Session session = SessionFactoryConfig.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             Book book = session.get(Book.class, id);
             session.delete(book);
@@ -93,7 +95,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public int generateNewId() throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         String sql = "SELECT book_id FROM book ORDER BY book_id DESC LIMIT 1";
         NativeQuery query = session.createSQLQuery(sql);
         List<Object[]> idList = query.list();
@@ -110,7 +112,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public ArrayList<String> getAllId() throws SQLException, ClassNotFoundException {
-        //Session session1 = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         /*String sql = "SELECT book_id FROM book ORDER BY LENGTH(book_id),book_id ";
         NativeQuery query = session1.createSQLQuery(sql);
         List<Object[]> list = query.list();
@@ -155,7 +157,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public ArrayList<String> getAvailableBookData() {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         String sql = "SELECT book_id FROM book WHERE available_status=:1";
         NativeQuery query = session.createSQLQuery(sql);
         query.setParameter("1","Available");
@@ -178,7 +180,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public ArrayList<String> getAvailableBookNames() {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         String sql = "SELECT book_name FROM book WHERE available_status=:1";
         NativeQuery query = session.createSQLQuery(sql);
         query.setParameter("1","Available");
@@ -214,6 +216,7 @@ public class BookDaoImpl implements BookDao {
         String bookId = String.valueOf(list2.get(0));
 
         session1.close();
+
         return bookId;
     }
 
@@ -243,5 +246,43 @@ public class BookDaoImpl implements BookDao {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             return null;
         }
+    }
+
+    @Override
+    public int getAllBookCount() {
+        Session session = SessionFactoryConfig.getInstance().getSession();
+
+        String sql = "SELECT COUNT(book_id) FROM book ";
+        NativeQuery query = session.createSQLQuery(sql);
+
+        List<Object[]> list = query.list();
+
+        Object book = list.get(0);
+
+        String bookCounts = String.valueOf(book);
+        int bookCount = Integer.parseInt(bookCounts);
+
+        session.close();
+        return bookCount;
+    }
+
+    @Override
+    public int getAllBorrowedBookCount() {
+        Session session = SessionFactoryConfig.getInstance().getSession();
+
+        String sql = "SELECT COUNT(book_id) FROM book WHERE available_status = :1 ";
+        NativeQuery query = session.createSQLQuery(sql);
+        String available = "No";
+        query.setParameter("1",available);
+
+        List<Object[]> list = query.list();
+
+        Object book = list.get(0);
+
+        String bookCounts = String.valueOf(book);
+        int bookCount = Integer.parseInt(bookCounts);
+
+        session.close();
+        return bookCount;
     }
 }

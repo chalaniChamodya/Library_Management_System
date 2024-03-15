@@ -17,15 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
-    private final Session session;
-
-    public UserDaoImpl() {
-        session = SessionFactoryConfig.getInstance().getSession();
-    }
+    //private final Session session;
 
     @Override
     public User getData(int id) throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         User user = session.get(User.class, id);
         return user;
     }
@@ -37,7 +33,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean save(User dto) throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         int affectedRows = (int) session.save(dto);
         transaction.commit();
@@ -48,7 +44,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean update(User dto) throws SQLException, ClassNotFoundException {
         try {
-            //Session session = SessionFactoryConfig.getInstance().getSession();
+            Session session = SessionFactoryConfig.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             session.update(dto);
             transaction.commit();
@@ -63,7 +59,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         try {
-            //Session session = SessionFactoryConfig.getInstance().getSession();
+            Session session = SessionFactoryConfig.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             User user = session.get(User.class, id);
             session.delete(user);
@@ -83,7 +79,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public ArrayList<String> getAllId() throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<User> criteria = builder.createQuery(User.class);
         Root<User> root = criteria.from(User.class);
@@ -108,7 +104,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int checkUsernameAndPassword(String userName, String password) {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         String sql = "SELECT user_id FROM user WHERE user_name=:1 AND password=:2";
         NativeQuery query = session.createSQLQuery(sql);
         query.setParameter("1",userName);
@@ -122,5 +118,23 @@ public class UserDaoImpl implements UserDao {
 
         session.close();
         return id;
+    }
+
+    @Override
+    public int getAllUserCount() {
+        Session session = SessionFactoryConfig.getInstance().getSession();
+
+        String sql = "SELECT COUNT(user_id) FROM user ";
+        NativeQuery query = session.createSQLQuery(sql);
+
+        List<Object[]> list = query.list();
+
+        Object user = list.get(0);
+
+        String userCounts = String.valueOf(user);
+        int userCount = Integer.parseInt(userCounts);
+
+        session.close();
+        return userCount;
     }
 }

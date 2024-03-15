@@ -14,7 +14,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        BOOK,ADMIN, BRANCH,USER,TRANSACTION
+        BOOK,ADMIN, BRANCH,USER,TRANSACTION,QUERY
     }
 
     public SuperDAO getDAO(DAOTypes daoTypes){
@@ -29,6 +29,8 @@ public class DAOFactory {
                 return new UserDaoImpl();
             case TRANSACTION:
                 return new TransactionDaoImpl();
+            case QUERY:
+                return new QueryDaoImpl();
         }
         return null;
     }

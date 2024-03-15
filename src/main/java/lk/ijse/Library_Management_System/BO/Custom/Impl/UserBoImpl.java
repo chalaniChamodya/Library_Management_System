@@ -76,4 +76,9 @@ public class UserBoImpl implements UserBO {
     public int checkUsernameAndPassword(String userName, String password) throws SQLException, ClassNotFoundException {
         return userDao.checkUsernameAndPassword(userName,password);
     }
+
+    @Override
+    public int getAllUserCount() {
+        return userDao.getAllUserCount();
+    }
 }

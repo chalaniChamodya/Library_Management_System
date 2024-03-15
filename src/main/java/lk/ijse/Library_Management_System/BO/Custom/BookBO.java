@@ -21,4 +21,10 @@ public interface BookBO extends SuperBO {
     ArrayList<String> getAvailableBookNames();
 
     String getBookId(String bookName);
+
+    int getAllBookCount();
+
+    int getAllBorrowedBookCount();
+
+
 }

@@ -12,11 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDaoImpl implements AdminDao {
-    private final Session session;
-
-    public AdminDaoImpl() {
-        session = SessionFactoryConfig.getInstance().getSession();
-    }
+    //private final Session session;
 
     @Override
     public Admin getData(int id) throws SQLException, ClassNotFoundException {
@@ -30,7 +26,7 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public boolean save(Admin admin) throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         int adminId = (int) session.save(admin);
@@ -61,7 +57,7 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public int checkUsernameAndPassword(String username, String password) {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         String sql = "SELECT admin_id FROM admin WHERE admin_name=:1 AND password=:2";
         NativeQuery query = session.createSQLQuery(sql);
         query.setParameter("1",username);

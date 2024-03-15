@@ -24,11 +24,17 @@ public class StaffGlobalFormController {
         return controller;
     }
 
-    public void initialize(){
+    public void initialize() throws IOException {
         btnDashboardLine.setStyle("-fx-background-color: white");
+        Navigation.switchPaging(pagingPane,"StaffDashboardForm.fxml");
     }
 
-    public void btnDashboardOnAction(ActionEvent actionEvent) {
+    public void btnDashboardOnAction(ActionEvent actionEvent) throws IOException {
+        btnBookLine.setStyle("-fx-background-color: #064273");
+        btnMemberLine.setStyle("-fx-background-color: #064273");
+        btnBranchLine.setStyle("-fx-background-color: #064273");
+        btnDashboardLine.setStyle("-fx-background-color: white");
+        Navigation.switchPaging(pagingPane,"StaffDashboardForm.fxml");
     }
 
     public void btnBookOnAction(ActionEvent actionEvent) throws IOException {

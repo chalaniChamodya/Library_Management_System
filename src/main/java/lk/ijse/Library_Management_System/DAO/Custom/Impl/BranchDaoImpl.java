@@ -16,15 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BranchDaoImpl implements BranchDao {
-    private final Session session;
+    //private final Session session;
 
-    public BranchDaoImpl() {
-        session = SessionFactoryConfig.getInstance().getSession();
-    }
+
 
     @Override
     public Branch getData(int id) throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         Branch branch = session.get(Branch.class, id);
         return branch;
     }
@@ -36,7 +34,7 @@ public class BranchDaoImpl implements BranchDao {
 
     @Override
     public boolean save(Branch dto) throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         int affectedRows = (int) session.save(dto);
         transaction.commit();
@@ -47,7 +45,7 @@ public class BranchDaoImpl implements BranchDao {
     @Override
     public boolean update(Branch dto) throws SQLException, ClassNotFoundException {
         try {
-            //Session session = SessionFactoryConfig.getInstance().getSession();
+            Session session = SessionFactoryConfig.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             session.update(dto);
             transaction.commit();
@@ -62,7 +60,7 @@ public class BranchDaoImpl implements BranchDao {
     @Override
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         try {
-            //Session session = SessionFactoryConfig.getInstance().getSession();
+            Session session = SessionFactoryConfig.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             Branch branch = session.get(Branch.class, id);
             session.delete(branch);
@@ -82,7 +80,7 @@ public class BranchDaoImpl implements BranchDao {
 
     @Override
     public ArrayList<String> getAllId() throws SQLException, ClassNotFoundException {
-        //Session session = SessionFactoryConfig.getInstance().getSession();
+        Session session = SessionFactoryConfig.getInstance().getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Branch> criteria = builder.createQuery(Branch.class);
         Root<Branch> root = criteria.from(Branch.class);

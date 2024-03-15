@@ -79,4 +79,14 @@ public class BookBoImpl implements BookBO {
     public String getBookId(String bookName) {
         return bookDao.getBookId(bookName);
     }
+
+    @Override
+    public int getAllBookCount() {
+        return bookDao.getAllBookCount();
+    }
+
+    @Override
+    public int getAllBorrowedBookCount() {
+        return bookDao.getAllBorrowedBookCount();
+    }
 }

@@ -5,4 +5,6 @@ import lk.ijse.Library_Management_System.Entity.User;
 
 public interface UserDao extends CrudDao<User> {
     int checkUsernameAndPassword(String userName, String password);
+
+    int getAllUserCount();
 }

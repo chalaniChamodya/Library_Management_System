@@ -38,6 +38,7 @@ public class StaffDashboardFormController {
         lblTotalBooks.setText(String.valueOf(bookBO.getAllBookCount()));
         lblBorrowedBooks.setText(String.valueOf(bookBO.getAllBorrowedBookCount()));
        // lblOverdueBooks.setText(String.valueOf(queryBO.getAllOverdueBookCount()));
+        lblOverdueBooks.setText("0");
     }
 
     public void btnUserOnAction(ActionEvent actionEvent) throws IOException {
@@ -52,5 +53,8 @@ public class StaffDashboardFormController {
 
     public void btnTotalBookOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.switchPaging(pagingPane,"StaffBookForm.fxml");
+    }
+
+    public void btnAdminProfileOnAction(ActionEvent actionEvent) {
     }
 }

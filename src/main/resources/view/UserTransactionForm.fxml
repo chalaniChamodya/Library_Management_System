@@ -13,7 +13,6 @@
    <children>
       <AnchorPane layoutX="14.0" layoutY="76.0" prefHeight="945.0" prefWidth="1779.0" style="-fx-background-color: E8E9EB; -fx-background-radius: 15;">
          <children>
-            <Button layoutX="1094.0" layoutY="709.0" mnemonicParsing="false" onAction="#btnDoneTransactionOnAction" text="Done" />
             <ComboBox fx:id="cmbBook1" layoutX="344.0" layoutY="126.0" onAction="#cmbBookNameOnAction" prefHeight="39.0" prefWidth="436.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
             <Label layoutX="913.0" layoutY="96.0" text="Book ID" textFill="#064273">
                <font>
@@ -67,6 +66,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
+            <Button layoutX="630.0" layoutY="721.0" mnemonicParsing="false" onAction="#btnAddOnAction" text="Done" />
          </children>
       </AnchorPane>
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="51.0" prefWidth="1426.0" style="-fx-background-color: E8E9EB; -fx-background-radius: 8;">

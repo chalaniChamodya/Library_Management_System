@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class UserDashboardFormController {
+    private static UserDashboardFormController controller;
     public AnchorPane pagingPane;
     public VBox vBox;
     public Label txtTime;
@@ -34,6 +35,14 @@ public class UserDashboardFormController {
     BookBO bookBO = new BookBoImpl();
     TransactionBO transactionBO = new TransactionBoImpl();
 
+    public UserDashboardFormController(){
+        controller = this;
+    }
+
+    public static UserDashboardFormController getInstance(){
+        return controller;
+    }
+
     public void initialize() throws SQLException, ClassNotFoundException {
         setData();
         lblTotalBooks.setText(String.valueOf(bookBO.getAllBookCount()));
@@ -44,7 +53,7 @@ public class UserDashboardFormController {
         timeline.play();
     }
 
-    private void getAllTransationId() throws SQLException, ClassNotFoundException {
+    public void getAllTransationId() throws SQLException, ClassNotFoundException {
         ArrayList<String> list = null;
 
         if (UserLoginFormController.logedUserId > 0){

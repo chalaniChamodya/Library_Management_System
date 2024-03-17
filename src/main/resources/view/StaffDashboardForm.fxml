@@ -71,7 +71,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <Button layoutX="1578.0" layoutY="120.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="190.0" style="-fx-background-color: #064273; -fx-background-radius: 5;" text="Add Books" textFill="WHITE">
+      <Button layoutX="1578.0" layoutY="120.0" mnemonicParsing="false" onAction="#btnAdminProfileOnAction" prefHeight="51.0" prefWidth="190.0" style="-fx-background-color: #064273; -fx-background-radius: 5;" text="Profile" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

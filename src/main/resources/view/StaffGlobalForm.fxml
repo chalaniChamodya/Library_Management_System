@@ -42,5 +42,14 @@
       </Pane>
       <Pane fx:id="pagingPane" layoutX="112.0" layoutY="14.0" prefHeight="1034.0" prefWidth="1806.0" />
       <AnchorPane fx:id="crudPane" layoutX="600.0" layoutY="250.0" prefHeight="602.0" prefWidth="749.0" />
+      <JFXButton layoutX="25.0" layoutY="969.0" onAction="#btnLogoutOnAction" text=" ">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0">
+               <image>
+                  <Image url="@../Assets/logout.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

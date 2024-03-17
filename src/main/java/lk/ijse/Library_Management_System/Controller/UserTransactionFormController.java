@@ -87,12 +87,6 @@ public class UserTransactionFormController {
        //
     }
 
-    public void btnOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        //System.out.println("button clicked");
-
-
-    }
-
     public void btnCancelOnAction(ActionEvent actionEvent) {
         clearFeilds();
     }
@@ -111,6 +105,34 @@ public class UserTransactionFormController {
 
         List<BookDTO> books = new ArrayList<>();
         BookDTO book1 = bookBO.getData(Integer.parseInt(lblBookId.getText()));
+        books.add(book1);
+
+        //dto.setBooks(books);
+
+        UserDTO userDto = userBO.getData(UserLoginFormController.logedUserId);
+        User user = new User();
+        user.setId(UserLoginFormController.logedUserId);
+        user.setName(userDto.getName());
+
+        dto.setUser(user);
+        dto.setBorrowedDate(lblBorrowDate.getText());
+        dto.setDueDate(lblDueDate.getText());
+
+        //boolean isSaved = transactionBO.saveTransaction(dto);
+        boolean isSaved = transactionBO.saveUserBookBorrow(dto, books);
+        if (isSaved){
+            new Alert(Alert.AlertType.CONFIRMATION, "Transaction Successful! ").show();
+            clearFeilds();
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Transaction didn't successful !").show();
+        }
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        TransactionDTO dto = new TransactionDTO();
+
+        List<BookDTO> books = new ArrayList<>();
+        BookDTO book1 = bookBO.getData(Integer.parseInt(lblBookId1.getText()));
         books.add(book1);
 
         //dto.setBooks(books);

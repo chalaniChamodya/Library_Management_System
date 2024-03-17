@@ -1,6 +1,7 @@
 package lk.ijse.Library_Management_System.Controller;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import lk.ijse.Library_Management_System.BO.Custom.BookBO;
@@ -84,5 +85,50 @@ public class UserTransactionUpdateFormController {
 
     public void btnCancelOnAction(ActionEvent actionEvent) {
         Navigation.closePopupUser();
+    }
+
+    public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        TransactionDTO dto = new TransactionDTO();
+        dto.setId(Integer.parseInt(lblTrend.getText()));
+
+        BookDTO bookDto = bookBO.getData(Integer.parseInt(lblBookId.getText()));
+        Book book = new Book();
+        book.setId(bookDto.getId());
+        book.setName(book.getName());
+        book.setAuthor(bookDto.getAuthor());
+        book.setBookStatus("Available");
+        int noOfCopies = bookDto.getNoOfCopies();
+        book.setNoOfCopies(noOfCopies+1);
+
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(book);
+
+        dto.setBooks(bookList);
+
+        UserDTO userDto = userBO.getData(UserLoginFormController.logedUserId);
+        User user = new User();
+        user.setId(userDto.getId());
+        user.setName(userDto.getName());
+        user.setAddress(userDto.getAddress());
+
+        dto.setUser(user);
+        dto.setBorrowedDate(lblBorrowDate.getText());
+        dto.setHandOverDate(String.valueOf(txtReturnDate.getValue()));
+        dto.setDueDate(lblDueDate.getText());
+
+        List<BookDTO> bookDTOList = new ArrayList<>();
+        BookDTO updateBook = bookBO.getData(Integer.parseInt(lblBookId.getText()));
+        updateBook.setNoOfCopies(noOfCopies);
+        updateBook.setStatus("Available");
+        bookDTOList.add(updateBook);
+
+        boolean isUpdated = transactionBO.UpdateUserBookBorrow(dto, bookDTOList);
+
+        if (isUpdated){
+            new Alert(Alert.AlertType.CONFIRMATION, "Transaction Updated !").show();
+            Navigation.closePopupUser();
+            UserDashboardFormController.getInstance().getAllTransationId();
+        }
+
     }
 }

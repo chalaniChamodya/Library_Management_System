@@ -58,4 +58,8 @@ public class UserGlobalFormController {
         btnMemberLine.setStyle("-fx-background-color: white");
         Navigation.switchPaging(pagingPane,"UserProfileForm.fxml");
     }
+
+    public void btnLogoutOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.switchNavigation("PreLoginForm.fxml", actionEvent);
+    }
 }

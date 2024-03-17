@@ -5,6 +5,7 @@ import lk.ijse.Library_Management_System.DAO.Custom.QueryDao;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class QueryDaoImpl implements QueryDao {
@@ -15,11 +16,11 @@ public class QueryDaoImpl implements QueryDao {
         String sql = "COUNT b.book_id\n" +
                 "FROM book b\n" +
                 "JOIN b.transactions t\n" +
-                "WHERE t.handover_date IS NULL AND t.due_date < CURRENT_DATE";
+                "WHERE t.handover_date IS NULL AND t.due_date <:CURRENTDATE";
         NativeQuery query = session.createSQLQuery(sql);
 
-       /*String available = "No";
-        query.setParameter("1",available);*/
+       LocalDate date = LocalDate.now();
+        query.setParameter("CURRENTDATE",date);
 
         List list = query.list();
 
